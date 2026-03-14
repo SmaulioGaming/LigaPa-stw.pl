@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/Projekt-bez-nazwy--55--imagetourl.cloud-1773513759774-lbxzyk.png">
+    <title>LigaPaństw.pl</title>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+        .gradient-text {
+            font-size: 45px;
+            background: linear-gradient(to right, #dda0dd, white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes shrink {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        .gradient-text:hover, .logo:hover {
+            animation: shrink 0.6s ease;
+        }
+        .flowing-text {
+            font-size: 32px;
+            background: linear-gradient(to right, deeppink, white);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flow 3s ease infinite;
+                }
+        .flowing-text-2 {
+            font-size: 32px;
+            background: linear-gradient(to right, rgb(226, 121, 226), white);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flow 3s ease infinite;
+        }
+        @keyframes flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+    </style>
+</head>
+
+<!-- BANER SKLEP/REGULAMIN (NAVBAR!!!!) -->
+<header style="
+    width: 100%;
+    background: #6c298a;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+">
+
+    <!-- LEWA STRONA: LOGO + NAZWA -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="https://image2url.com/r2/default/images/1773440370650-f015cf65-964c-4cde-8ed3-b1b4301c4af3.png"
+         class="logoPulse"
+         style="width: 55px; height: auto;">
+    <span style="color: white; font-size: 24px; font-weight: 800;">
+        LigaPaństw.pl
+    </span>
+</div>
+
+<style>
+    @keyframes pulseGlow {
+        0% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 0px #ffffff);
+        }
+        50% {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 10px #ffffff);
+        }
+        100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 0px #ffffff);
+        }
+
+    }
+
+    .logoPulse:hover {
+        animation: pulseGlow 0.8s infinite ease-in-out;
+        cursor: pointer;
+    }
+</style>
+
+    <!-- ŚRODEK: START | REGULAMIN | SKLEP -->
+    <nav style="display: flex; gap: 45px;"> <!-- WIĘKSZE ODSTĘPY -->
+        <a class="navlink" href="start.html">START</a>
+        <a class="navlink" href="regulamin.html">REGULAMIN</a>
+        <a class="navlink" href="sklep.html">SKLEP</a>
+    </nav>
+
+        <!-- PRAWA STRONA: ONLINE -->
+        <div style="display: flex; align-items: center; gap: 8px; color: white; font-weight: 700; margin-right: 40px;">
+            <span style="
+                width: 10px;
+                height: 10px;
+                background: #2ecc71;
+                border-radius: 50%;
+                display: inline-block;
+            "></span>
+            <span id="onlineCount">0 ONLINE</span>
+        </div>
+    </header>
+
+<!-- STYL PODŚWIETLENIA -->
+<style>
+    .navlink {
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 18px;
+        position: relative;
+        padding-bottom: 4px;
+        transition: 0.25s;
+    }
+
+    .navlink::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 3px;
+        background: #ffd86b;
+        box-shadow: 0 0 8px #ffd86b;
+        transition: 0.25s;
+        border-radius: 2px;
+    }
+
+    .navlink:hover {
+        color: #ffd86b;
+        text-shadow: 0 0 6px rgba(255, 216, 107, 0.7);
+    }
+
+    .navlink:hover::after {
+        width: 100%;
+    }
+</style>
+
+</header>
+
+<!-- HOVER EFEKT -->
+<style>
+    header nav a:hover {
+        color: #ffd86b;
+        text-shadow: 0 0 6px rgba(255, 216, 107, 0.7);
+    }
+</style>
+<!-- koniec navbar -->
+
+</header>
+
+<!-- SEKCJA HERO POD NAVBAREM -->
+<section style="
+    width: 100%;
+    background: #120018;
+    padding: 60px 0 80px 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    position: relative;
+">
+
+    <!-- GŁÓWNY TEKST -->
+    <h2 style="
+        font-size: 26px;
+        font-weight: 500;
+        opacity: 0.9;
+        margin-bottom: 10px;
+    ">
+        ᴛᴡᴏ́ᴊ ᴜʟᴜʙɪᴏɴʏ ꜱᴇʀᴡᴇʀ ᴍɪɴᴇᴄʀᴀꜰᴛ
+    </h2>
+
+<h1 style="
+    font-size: 70px;
+    font-weight: 900;
+    background: linear-gradient(45deg, #a9008a, #c61ea1, #e180f9);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0;
+    margin-bottom: 40px;
+    animation: gradientFlow 4s ease infinite;
+">
+
+        LIGAPANSTW.PL
+    </h1>
+
+    <!-- GRAFIKA NA ŚRODKU -->
+    <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/Projekt-bez-nazwy--50--imagetourl.cloud-1773483500931-vfcfxn.png"
+         alt="Grafika serwera"
+         style="
+            width: 480px;
+            height: auto;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 25px rgba(255, 0, 200, 0.4));
+         ">
+
+    <!-- KAFELKI -->
+    <div style="
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+    ">
+
+<!-- LEWY KAFEL -->
+<div style="
+    background: #ffb347;
+    padding: 20px 35px;
+    border-radius: 12px;
+    color: black;
+    font-weight: 800;
+    font-size: 20px;
+    box-shadow: 0 0 20px rgba(255, 179, 71, 0.5);
+    transform: rotate(4deg);
+    transition: 0.25s ease;
+">
+    <div id="onlineBoxCount" style="font-size: 26px; font-weight: 900;">ŁADOWANIE...</div>
+    <div style="margin-top: 5px;">DOŁĄCZ DO GRY</div>
+</div>
+<script>
+async function loadPlayers() {
+    try {
+        const response = await fetch("https://api.mcsrvstat.us/2/ligapanstw.pl");
+        const data = await response.json();
+
+        let online = "OFFLINE";
+
+        if (data && data.players && data.players.online !== undefined) {
+            online = data.players.online + " ONLINE";
+        }
+
+        // NAVBAR
+        document.getElementById("onlineCount").innerText = online;
+
+        // KAFEL
+        document.getElementById("onlineBoxCount").innerText = online.replace("ONLINE", "GRACZY ONLINE");
+
+    } catch (e) {
+        document.getElementById("onlineCount").innerText = "BŁĄD";
+        document.getElementById("onlineBoxCount").innerText = "BŁĄD";
+    }
+}
+
+loadPlayers();
+setInterval(loadPlayers, 30000); // odświeżanie co 30s
+</script>
+
+
+<!-- PRAWY KAFEL -->
+<a href="https://discord.gg/TWOJ_LINK" target="_blank" style="
+    background: #6c63ff;
+    padding: 20px 35px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 800;
+    font-size: 20px;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+    transform: rotate(-4deg); /* OBRÓT W LEWO */
+    transition: 0.25s ease;
+">
+    <div style="font-size: 26px; font-weight: 900;">Już teraz!</div>
+    <div style="margin-top: 5px;">DOŁĄCZ DO NASZEGO DISCORDA</div>
+</a>
+
+    </div>
+
+<!-- IP SERWERA W RAMCE -->
+<div onclick="copyIP()" style="
+    display: inline-block;
+    padding: 12px 25px;
+    background: #2b0f3a;
+    border: 2px solid #b26bff;
+    border-radius: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 0 15px rgba(178, 107, 255, 0.4);
+">
+    ɪᴘ ꜱᴇʀᴡᴇʀᴀ: <span style="color: #ff8ce7;">ligapanstw.pl 📄</span>
+</div>
+<script>
+function copyIP() {
+    navigator.clipboard.writeText("ligapanstw.pl");
+    alert("Skopiowano IP: ligapanstw.pl");
+}
+</script>
+
+<!-- SEKCJA 3 KAFELKÓW -->
+<div style="
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 80px;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap;
+">
+
+    <!-- KAFEL 1 -->
+    <div class="info-card" style="
+        width: 280px;
+        background: hsl(283, 96%, 11%);
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        border: 2px solid transparent;
+        transition: 0.3s;
+    ">
+        <img class="card-icon" src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/Projekt-bez-nazwy--52--imagetourl.cloud-1773485450415-axqml4.png" style="width: 70px; margin-bottom: 15px;">
+        <h3 style="margin: 0; font-size: 24px; color: #ff8ce7;">RANGI</h3>
+        <p style="opacity: 0.8; margin-top: 10px;">
+            Kup rangę i zdobądź ekskluzywne perki! Wyróżnij się na serwerze i zyskaj dostęp do komend VIP.
+        </p>
+    </div>
+
+    <!-- KAFEL 2 -->
+    <div class="info-card" style="
+        width: 280px;
+        background: hsl(283, 96%, 11%);
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        border: 2px solid transparent;
+        transition: 0.3s;
+    ">
+        <img class="card-icon" src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/Projekt-bez-nazwy--53--imagetourl.cloud-1773485645711-xefqpi.png" style="width: 70px; margin-bottom: 15px;">
+        <h3 style="margin: 0; font-size: 24px; color: #ff8ce7;">EVENTY</h3>
+        <p style="opacity: 0.8; margin-top: 10px;">
+            Konkursy budowlane, turnieje pvp, wiele innych atrakcji.
+        </p>
+    </div>
+
+    <!-- KAFEL 3 -->
+    <div class="info-card" style="
+        width: 280px;
+        background: hsl(283, 96%, 11%);
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        border: 2px solid transparent;
+        transition: 0.3s;
+    ">
+        <img class="card-icon" src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/Projekt-bez-nazwy--54--imagetourl.cloud-1773485767611-j6ia2c.png" style="width: 70px; margin-bottom: 15px;">
+        <h3 style="margin: 0; font-size: 24px; color: #ff8ce7;">SPOŁECZNOŚĆ</h3>
+        <p style="opacity: 0.8; margin-top: 10px;">
+            Dołącz do Discorda i poznaj nowych ludzi!
+        </p>
+    </div>
+
+</div>
+<style>
+.info-card:hover {
+    border-color: #b26bff;
+    box-shadow: 0 0 15px rgba(178, 107, 255, 0.5);
+    transform: translateY(-5px);
+}
+
+/* PODŚWIETLENIE IKONY */
+.info-card:hover .card-icon {
+    filter: drop-shadow(0 0 12px #b26bff);
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+</style>
+
+<footer style="
+    background: #1a0f1f;
+    padding: 60px 0;
+    margin-top: 80px;
+    color: white;
+    font-family: Arial, sans-serif;
+    border-top: 3px solid #b26bff;
+    box-shadow: 0 -5px 25px rgba(178, 107, 255, 0.3);
+">
+
+    <div style="
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+    ">
+
+        <!-- LEWA STRONA -->
+        <div style="width: 300px; text-align: center;">
+
+            <!-- MIEJSCE NA OBRAZEK -->
+            <img src="https://image2url.com/r2/default/images/1773440370650-f015cf65-964c-4cde-8ed3-b1b4301c4af3.png"
+                 alt="Logo"
+                 style="
+                    width: 180px;
+                    height: auto;
+                    margin-bottom: 20px;
+                    filter: drop-shadow(0 0 10px rgba(178, 107, 255, 0.5));
+                 ">
+
+            <!-- KAFELEK DISCORD -->
+            <a href="https://discord.gg/spC3uGZyJV" target="_blank" style="
+                display: block;
+                background: #b26bff;
+                padding: 15px 20px;
+                border-radius: 10px;
+                text-decoration: none;
+                color: white;
+                font-weight: 700;
+                font-size: 18px;
+                box-shadow: 0 0 15px rgba(178, 107, 255, 0.5);
+                transition: 0.2s;
+            ">
+                Dołącz do Discorda 🎮
+            </a>
+
+        </div>
+
+        <!-- PRAWA STRONA -->
+        <div style="
+            display: flex;
+            gap: 120px;
+            flex-wrap: wrap;
+        ">
+
+            <!-- Przydatne linki -->
+            <div>
+                <h3 style="color: #d9a6ff; margin-bottom: 15px;">PRZYDATNE LINKI</h3>
+                <p><a href="index.html" style="color: white; text-decoration: none;">Start</a></p>
+                <p><a href="regulamin.html" style="color: white; text-decoration: none;">Regulamin</a></p>
+                <p><a href="sklep.html" style="color: white; text-decoration: none;">Sklep</a></p>
+            </div>
+
+            <!-- Social media -->
+            <div>
+                <h3 style="color: #d9a6ff; margin-bottom: 15px;">SOCIAL MEDIA</h3>
+                <p><a href="#" style="color: white; text-decoration: none;">Discord</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">TikTok</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">YouTube</a></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DANE NA DOLE -->
+    <div style="text-align: center; margin-top: 50px; opacity: 0.8;">
+        <p style="margin-top: 20px;">© 2026 LIGAPANSTW.PL - Wszelkie prawa zastrzeżone</p>
+    </div>
+</footer>
+
+</body>
+</html>

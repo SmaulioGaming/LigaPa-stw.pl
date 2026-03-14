@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/Projekt-bez-nazwy--55--imagetourl.cloud-1773513759774-lbxzyk.png">
+    <title>Regulamin - LigaPaństw.pl</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6c298a, #a040b0, #dda0dd);
+            color: white;
+            min-height: 100vh;
+        }
+        .gradient-text {
+            font-size: 45px;
+            background: linear-gradient(to right, #d300ad, rgb(228, 104, 201));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900; /* <-- GRUBSZY TEKST */
+        }
+        @keyframes shrink {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        .gradient-text:hover, .logo:hover {
+            animation: shrink 0.6s ease;
+        }
+        .flowing-text {
+            font-size: 32px;
+            background: linear-gradient(to right, deeppink, white);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flow 3s ease infinite;
+        }
+        .flowing-text-2 {
+            font-size: 32px;
+            background: linear-gradient(to right, rgb(226, 121, 226), white);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: flow 3s ease infinite;
+        }
+        @keyframes flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 0px #ffffff);
+            }
+            50% {
+                transform: scale(1.08);
+                filter: drop-shadow(0 0 10px #ffffff);
+            }
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 0px #ffffff);
+            }
+        }
+        .logoPulse:hover {
+            animation: pulseGlow 0.8s infinite ease-in-out;
+            cursor: pointer;
+        }
+        .navlink {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 4px;
+            transition: 0.25s;
+        }
+        .navlink::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 3px;
+            background: #ffd86b;
+            box-shadow: 0 0 8px #ffd86b;
+            transition: 0.25s;
+            border-radius: 2px;
+        }
+        .navlink:hover {
+            color: #ffd86b;
+            text-shadow: 0 0 6px rgba(255, 216, 107, 0.7);
+        }
+        .navlink:hover::after {
+            width: 100%;
+        }
+        header {
+            width: 100%;
+            background: #6c298a;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+    .container {
+    max-width: 1000px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 80px 40px 40px 40px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+:root {
+    --banner-height: 5px; /* ZMIEŃ TUTAJ wysokość paska (góra-dół) */
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 11px;
+    right: 11px;
+    height: var(--banner-height); /* Używa zmiennej */
+    background: linear-gradient(90deg, #e479ff, deeppink, #ff75fd);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(255, 216, 107, 0.5);
+    z-index: 2;
+    animation: bannerGlow 2s ease-in-out infinite alternate;
+}
+
+
+@keyframes bannerGlow {
+    0% { 
+        box-shadow: 0 10px 30px rgba(255, 216, 107, 0.4);
+    }
+    100% { 
+        box-shadow: 0 10px 40px rgba(255, 216, 107, 0.7), 0 0 20px rgba(255, 216, 107, 0.3);
+    }
+}
+        
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #dda0dd, #ffd86b, deeppink, white);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientFlow 4s ease infinite;
+
+        }
+        h2 {
+            color: #ffd86b;
+            font-size: 24px;
+            border-left: 5px solid #ffd86b;
+            padding-left: 20px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 216, 107, 0.5);
+        }
+        p, li {
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        /* Responsywność dla mniejszych ekranów */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+                margin: 20px auto;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <!-- LEWA STRONA: LOGO + NAZWA -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="https://image2url.com/r2/default/images/1773440370650-f015cf65-964c-4cde-8ed3-b1b4301c4af3.png"
+                 class="logoPulse"
+                 style="width: 55px; height: auto;">
+            <span style="color: white; font-size: 24px; font-weight: 800;">
+                LigaPaństw.pl
+            </span>
+        </div>
+
+        <!-- ŚRODEK: NAV -->
+        <nav style="display: flex; gap: 45px;">
+            <a class="navlink" href="start.html">START</a>
+            <a class="navlink" href="regulamin.html">REGULAMIN</a>
+            <a class="navlink" href="sklep.html">SKLEP</a>
+        </nav>
+
+        <!-- PRAWA STRONA: ONLINE -->
+        <div style="display: flex; align-items: center; gap: 8px; color: white; font-weight: 700; margin-right: 40px;">
+            <span style="
+                width: 10px;
+                height: 10px;
+                background: #2ecc71;
+                border-radius: 50%;
+                display: inline-block;
+            "></span>
+            <span id="onlineCount">0 ONLINE</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="gradient-text">Regulamin Sklepu i Serwera LigaPaństw.pl</h1>
+
+        <h2>1. Postanowienia wstępne</h2>
+        <ol>
+            <li>Sklep internetowy LigaPaństw.pl prowadzi sprzedaż usług i przedmiotów wirtualnych przeznaczonych do wykorzystania na serwerze Minecraft.</li>
+            <li>Korzystanie ze sklepu oznacza akceptację niniejszego regulaminu.</li>
+            <li>Serwer oraz sklep nie są powiązane z firmą Mojang AB.</li>
+        </ol>
+
+        <h2>2. Definicje</h2>
+        <ol>
+            <li><strong>Usługobiorca</strong> – osoba dokonująca zakupu usługi.</li>
+            <li><strong>Usługa</strong> – ranga, przedmiot lub inna korzyść przyznawana na serwerze.</li>
+            <li><strong>Doładowanie</strong> – zasilenie wirtualnego portfela środkami.</li>
+            <li><strong>Reklamacja</strong> – Pisemne zgłoszenie uzytkownika dotyczące niezgodności uslug z zamówieniem lub nienalezytego wykonania uslugi</li>
+        </ol>
+
+        <h2>3. Płatności</h2>
+        <ol>
+            <li>Płatności realizowane są automatycznie po zaksięgowaniu.</li>
+            <li>W przypadku problemów należy skontaktować się z administracją.</li>
+        </ol>
+
+        <h2>5. Reklamacje</h2>
+        <ol>
+            <li>Reklamacje należy zgłaszać przez Discord.</li>
+            <li>Reklamacja powinna zawierać nick, datę zakupu i opis problemu.</li>
+            <li>Reklamacje rozpatrywane są w ciągu 14 dni roboczych.</li>
+            <li>Administracja zastrzega sobie prawo do odmowy reklamacji w przypadku naruszenia regulaminu.</li>
+        </ol>
+
+        <h2>6. Postanowienia końcowe</h2>
+        <ol>
+            <li>Administracja zastrzega sobie prawo do zmiany regulaminu.</li>
+            <li>W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy prawa polskiego.</li>
+            <li>Korzystanie z serwera oznacza akceptację regulaminu.</li>
+        </ol>
+
+        <div class="footer">
+            © 2026 LigaPaństw.pl – Wszystkie prawa zastrzeżone
+        </div>
+    </div>
+
+<footer style="
+    background: #1a0f1f;
+    padding: 60px 0;
+    margin-top: 80px;
+    color: white;
+    font-family: Arial, sans-serif;
+    border-top: 3px solid #b26bff;
+    box-shadow: 0 -5px 25px rgba(178, 107, 255, 0.3);
+">
+
+    <div style="
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+    ">
+
+        <!-- LEWA STRONA -->
+        <div style="width: 300px; text-align: center;">
+
+            <!-- MIEJSCE NA OBRAZEK -->
+            <img src="https://image2url.com/r2/default/images/1773440370650-f015cf65-964c-4cde-8ed3-b1b4301c4af3.png"
+                 alt="Logo"
+                 style="
+                    width: 180px;
+                    height: auto;
+                    margin-bottom: 20px;
+                    filter: drop-shadow(0 0 10px rgba(178, 107, 255, 0.5));
+                 ">
+
+            <!-- KAFELEK DISCORD -->
+            <a href="https://discord.gg/spC3uGZyJV" target="_blank" style="
+                display: block;
+                background: #b26bff;
+                padding: 15px 20px;
+                border-radius: 10px;
+                text-decoration: none;
+                color: white;
+                font-weight: 700;
+                font-size: 18px;
+                box-shadow: 0 0 15px rgba(178, 107, 255, 0.5);
+                transition: 0.2s;
+            ">
+                Dołącz do Discorda 🎮
+            </a>
+
+        </div>
+
+        <!-- PRAWA STRONA -->
+        <div style="
+            display: flex;
+            gap: 120px;
+            flex-wrap: wrap;
+        ">
+
+            <!-- Przydatne linki -->
+            <div>
+                <h3 style="color: #d9a6ff; margin-bottom: 15px;">PRZYDATNE LINKI</h3>
+                <p><a href="index.html" style="color: white; text-decoration: none;">Start</a></p>
+                <p><a href="regulamin.html" style="color: white; text-decoration: none;">Regulamin</a></p>
+                <p><a href="sklep.html" style="color: white; text-decoration: none;">Sklep</a></p>
+            </div>
+
+            <!-- Social media -->
+            <div>
+                <h3 style="color: #d9a6ff; margin-bottom: 15px;">SOCIAL MEDIA</h3>
+                <p><a href="#" style="color: white; text-decoration: none;">Discord</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">TikTok</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">YouTube</a></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DANE NA DOLE -->
+    <div style="text-align: center; margin-top: 50px; opacity: 0.8;">
+        <p style="margin-top: 20px;">© 2026 LIGAPANSTW.PL - Wszelkie prawa zastrzeżone</p>
+    </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/Projekt-bez-nazwy--55--imagetourl.cloud-1773513759774-lbxzyk.png">
+    <title>LigaPaństw.pl Sklep</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6c298a, #a040b0, #dda0dd);
+            color: white;
+        }
+        .navlink {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 4px;
+            transition: 0.25s;
+        }
+        .navlink::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 3px;
+            background: #ffd86b;
+            box-shadow: 0 0 8px #ffd86b;
+            transition: 0.25s;
+            border-radius: 2px;
+        }
+        .navlink:hover {
+            color: #ffd86b;
+            text-shadow: 0 0 6px rgba(255, 216, 107, 0.7);
+        }
+        .navlink:hover::after {
+            width: 100%;
+        }
+        header {
+            width: 100%;
+            background: #6c298a;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .shop-grid {
+            max-width: 1600px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .shop-card {
+            width: 100%;
+            max-width: 380px;
+            height: 560px;
+            background: #1a0024;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            border: 2px solid #3a0a4a;
+            position: relative;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .shop-card:hover {
+            transform: translateY(-8px);
+            border-color: #b26bff;
+            box-shadow: 0 15px 35px rgba(178, 107, 255, 0.4);
+        }
+        .promo-badge {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            background: #ff4d4d;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 15px;
+        }
+        
+        /* ZMIENIAJ ROZMIAR GRAFIKI - data-img-size="1" do "10" */
+        .shop-card[data-img-size="1"] img { max-width: 320px; height: 180px; }
+        .shop-card[data-img-size="2"] img { max-width: 280px; height: 160px; }
+        .shop-card[data-img-size="3"] img { max-width: 350px; height: 200px; }
+        .shop-card[data-img-size="4"] img { max-width: 300px; height: 170px; }
+        .shop-card[data-img-size="5"] img { max-width: 260px; height: 150px; }
+        .shop-card[data-img-size="6"] img { max-width: 340px; height: 190px; }
+        .shop-card[data-img-size="7"] img { max-width: 290px; height: 165px; }
+        .shop-card[data-img-size="8"] img { max-width: 310px; height: 175px; }
+        .shop-card[data-img-size="9"] img { max-width: 270px; height: 155px; }
+        .shop-card[data-img-size="10"] img { max-width: 330px; height: 185px; }
+        
+        img {
+            width: 100%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            display: block;
+            border-radius: 8px;
+        }
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin: 15px 0;
+            flex-grow: 1;
+        }
+        .features-list li {
+            font-size: 14px;
+            padding: 4px 0;
+            color: #d9a6ff;
+            position: relative;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .features-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #ff8ce7;
+        }
+        .features-list li span {
+            display: block;
+        }
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .logoPulse:hover {
+    animation: pulseGlow 0.8s infinite ease-in-out;
+    cursor: pointer;
+        }
+        .card-name {
+            text-align: left;
+            font-size: 20px;
+            font-weight: 900;
+            color: #ff8ce7;
+        }
+        .card-price {
+            text-align: right;
+            line-height: 1;
+        }
+        .price-current {
+            font-size: 24px;
+            font-weight: 900;
+            color: #7affc9;
+            white-space: nowrap;
+        }
+        .price-old {
+            opacity: 0.6;
+            text-decoration: line-through;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        .shop-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .shop-card-link:hover .shop-card {
+            transform: translateY(-8px);
+            border-color: #b26bff;
+            box-shadow: 0 15px 35px rgba(178, 107, 255, 0.4);
+        }
+
+            @keyframes pulseGlow {
+    0% { transform: scale(1); filter: drop-shadow(0 0 0px #ffffff); }
+    50% { transform: scale(1.08); filter: drop-shadow(0 0 10px #ffffff); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 0px #ffffff); }
+}
+        @media (max-width: 768px) {
+            .shop-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="https://image2url.com/r2/default/images/1773440370650-f015cf65-964c-4cde-8ed3-b1b4301c4af3.png" class="logoPulse" style="width: 55px; height: auto;">
+            <span style="color: white; font-size: 24px; font-weight: 800;">LigaPaństw.pl</span>
+        </div>
+        <nav style="display: flex; gap: 45px;">
+            <a class="navlink" href="start.html">START</a>
+            <a class="navlink" href="regulamin.html">REGULAMIN</a>
+            <a class="navlink" href="sklep.html">SKLEP</a>
+        </nav>
+        <div style="display: flex; align-items: center; gap: 8px; color: white; font-weight: 700; margin-right: 40px;">
+            <span style="width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span>
+            <span id="onlineCount">0 ONLINE</span>
+        </div>
+    </header>
+
+    <!-- 10 IDENTYCZNYCH KAFELKÓW -->
+    <div class="shop-grid">
+        <!-- KAFEL 1 -->
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="1">
+                <div class="promo-badge">PROMOCJA -54%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/NwmKAxx-imagetourl.cloud-1773488047025-ikxxih.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    10 kluczy AFK
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    2 klucze Kosmiczne
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    1 klucz Broni
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Pakiet MIKRO - LIGA</div>
+                    <div class="card-price">
+                        <div class="price-current">30,00 zł</div>
+                        <div class="price-old">65,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- KAFEL 2 -->
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="2">
+                <div class="promo-badge">PROMOCJA -54%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/5YJKz17-imagetourl.cloud-1773488047241-1gzgkg.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    25 kluczy AFK
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    6 kluczy Kosmicznych
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    2 klucze Broni
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Pakiet DUŻA - LIGA</div>
+                    <div class="card-price">
+                        <div class="price-current">65,00 zł</div>
+                        <div class="price-old">140,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- KAFEL 3 -->
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="3">
+                <div class="promo-badge">PROMOCJA -76%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/unKjwY5-imagetourl.cloud-1773488047151-tl6sjs.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    50 kluczy AFK
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    15 kluczy Kosmicznych
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    8 kluczy Broni
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Subskrypcja Premium (30 dni)
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Ranga Mythic (30 dni)
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Pakiet - #1 LIGA</div>
+                    <div class="card-price">
+                        <div class="price-current">120,00 zł</div>
+                        <div class="price-old">505,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- KAFEL 4 -->
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="4">
+                <div class="promo-badge">PROMOCJA -0%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/lJXYeVk-imagetourl.cloud-1773492150074-72asjh.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    Daje dostęp do nowych komend /ec itd.
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Unikalny kit Mythic - klucz, zbroja i przedmioty
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    85% szansy na klucz AFK
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Czas trwania 30 dni
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Ranga MYTHIC</div>
+                    <div class="card-price">
+                        <div class="price-current">35,00 zł</div>
+                        <div class="price-old">35,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- KAFEL 5-10 - kopiuj wzór, zmieniaj tylko data-img-size="5"..."10" i dane -->
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="5">
+                <div class="promo-badge">PROMOCJA -0%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/pbmVnIh-imagetourl.cloud-1773492150602-58259m.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    Daje dostęp do nowych komend /ec itd.
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Unikalny kit Premium - Zestaw kluczy i innych nagrod (codziennie)
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Czas trwania 30 dni
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Subskrypcja PREMIUM</div>
+                    <div class="card-price">
+                        <div class="price-current">40,00 zł</div>
+                        <div class="price-old">40,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="6">
+                <div class="promo-badge">PROMOCJA -0%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/EKDkiXV-imagetourl.cloud-1773492150401-rzvssf.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    Dostęp do nowych komend /ec itd.
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Wlasny kit Basic - Maly zestaw kluczy i innych nagrod (codziennie)
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Czas trwania 30 dni
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Subskrypcja BASIC</div>
+                    <div class="card-price">
+                        <div class="price-current">15,00 zł</div>
+                        <div class="price-old">15,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="7">
+                <div class="promo-badge">PROMOCJA -0%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/vs5vtez-imagetourl.cloud-1773492765490-klv4jb.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    Klucz do skrzyni Kosmicznej
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Są w niej najlepsze przedmioty na serwerze do trafienia
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Klucz Kosmiczny</div>
+                    <div class="card-price">
+                        <div class="price-current">15,00 zł</div>
+                        <div class="price-old">15,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="8">
+                <div class="promo-badge">PROMOCJA -0%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/ncNQtKb-imagetourl.cloud-1773492765447-nyrd9y.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    Klucz do skrzyni Bronii
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Są w niej wszystkie bronie palne na serwerze do trafienia
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Klucz Bronii</div>
+                    <div class="card-price">
+                        <div class="price-current">10,00 zł</div>
+                        <div class="price-old">10,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="9">
+                <div class="promo-badge">PROMOCJA -0%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/OrvJCY7-imagetourl.cloud-1773493129471-lum2s4.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    Klucz do skrzyni AFK
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Są w niej niskiej/średniej jakości przedmioty na serwerze do trafienia
+</li>
+                    <li style="font-weight: 900; font-size: 15px;">
+    Można również trafić klucz AFK ze strefy AFK, ale szansa niska!
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">MONTHLY VIP</div>
+                    <div class="card-price">
+                        <div class="price-current">2,50 zł</div>
+                        <div class="price-old">2,50 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://discord.gg/spC3uGZyJV" class="shop-card-link">
+            <div class="shop-card" data-img-size="10">
+                <div class="promo-badge">PROMOCJA -0%</div>
+                <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/Image_to_url_V2/BqFZaTT-imagetourl.cloud-1773493128723-gg3dqp.png">
+                <ul class="features-list">
+                    <li style="font-weight: 900; font-size: 15px;">
+    Jest to wejsciówka miesięczna do serwera
+</li>
+                </ul>
+                <div class="card-bottom">
+                    <div class="card-name">Wejściówka Miesięczna</div>
+                    <div class="card-price">
+                        <div class="price-current">10,00 zł</div>
+                        <div class="price-old">10,00 zł</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+<footer style="
+    background: #1a0f1f;
+    padding: 60px 0;
+    margin-top: 80px;
+    color: white;
+    font-family: Arial, sans-serif;
+    border-top: 3px solid #b26bff;
+    box-shadow: 0 -5px 25px rgba(178, 107, 255, 0.3);
+">
+
+    <div style="
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 40px;
+    ">
+
+        <!-- LEWA STRONA -->
+        <div style="width: 300px; text-align: center;">
+
+            <!-- MIEJSCE NA OBRAZEK -->
+            <img src="https://image2url.com/r2/default/images/1773440370650-f015cf65-964c-4cde-8ed3-b1b4301c4af3.png"
+                 alt="Logo"
+                 style="
+                    width: 180px;
+                    height: auto;
+                    margin-bottom: 20px;
+                    filter: drop-shadow(0 0 10px rgba(178, 107, 255, 0.5));
+                 ">
+
+            <!-- KAFELEK DISCORD -->
+            <a href="https://discord.gg/spC3uGZyJV" target="_blank" style="
+                display: block;
+                background: #b26bff;
+                padding: 15px 20px;
+                border-radius: 10px;
+                text-decoration: none;
+                color: white;
+                font-weight: 700;
+                font-size: 18px;
+                box-shadow: 0 0 15px rgba(178, 107, 255, 0.5);
+                transition: 0.2s;
+            ">
+                Dołącz do Discorda 🎮
+            </a>
+
+        </div>
+
+        <!-- PRAWA STRONA -->
+        <div style="
+            display: flex;
+            gap: 120px;
+            flex-wrap: wrap;
+        ">
+
+            <!-- Przydatne linki -->
+            <div>
+                <h3 style="color: #d9a6ff; margin-bottom: 15px;">PRZYDATNE LINKI</h3>
+                <p><a href="index.html" style="color: white; text-decoration: none;">Start</a></p>
+                <p><a href="regulamin.html" style="color: white; text-decoration: none;">Regulamin</a></p>
+                <p><a href="sklep.html" style="color: white; text-decoration: none;">Sklep</a></p>
+            </div>
+
+            <!-- Social media -->
+            <div>
+                <h3 style="color: #d9a6ff; margin-bottom: 15px;">SOCIAL MEDIA</h3>
+                <p><a href="#" style="color: white; text-decoration: none;">Discord</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">TikTok</a></p>
+                <p><a href="#" style="color: white; text-decoration: none;">YouTube</a></p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DANE NA DOLE -->
+    <div style="text-align: center; margin-top: 50px; opacity: 0.8;">
+        <p style="margin-top: 20px;">© 2026 LIGAPANSTW.PL - Wszelkie prawa zastrzeżone</p>
+    </div>
+</body>
+</html>
+
+
